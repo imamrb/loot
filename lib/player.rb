@@ -1,7 +1,7 @@
 class Player
   attr_accessor :lat, :long, :name, :world
 
-  def initialize(name:, lat:, long:, world:)
+  def initialize(name: 'player', lat:, long:, world:)
     @name = name
     @lat = lat
     @long = long

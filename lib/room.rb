@@ -15,6 +15,10 @@ class Room
     @type = get_type
   end
 
+  def interact(player)
+    @type.interact(player)
+  end
+
   def info
     puts "You are now in cell #{lat}, #{long}"
     @type.info

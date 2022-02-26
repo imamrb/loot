@@ -1,10 +1,11 @@
 class World
-  attr_accessor :map, :stats, :rows, :columns
+  attr_accessor :map, :stats, :rows, :columns, :visited_rooms
 
   def initialize(args)
     @rows = args[:rows]
     @columns = args[:columns]
     @map = generate_map
+    @visited_rooms = 1
   end
 
   def show_map
@@ -20,6 +21,7 @@ class World
 
   def visit(lat, long)
     map[lat][long] = 'O'
+    self.visited_rooms += 1
   end
 
   def visited?(lat, long)

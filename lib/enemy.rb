@@ -9,6 +9,10 @@ class Enemy
     @health = rand(1..100)
   end
 
+  def interact(player)
+    
+  end
+
   def info
     "You are facing enemy #{name}! What do you do? (fight/run)"
   end

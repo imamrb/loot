@@ -1,36 +1,38 @@
-class Enemy
-  attr_accessor :name, :power, :health
+# frozen_string_literal: true
+
+# Defines an Enemy class
+class Enemy < Character
+  attr_reader :boss
 
   NAMES = %w[HULK IMP GIANT LAVA HOUND]
 
-  def initialize(is_boss: false)
-    @power = is_boss ? 8 : rand(3..5)
-    @name = NAMES.sample
-    @health = is_boss ? 50 : rand(20..30)
-  end
+  MIN_POWER = 4
+  MAX_POWER = 7
+  MAX_HEALTH = 30
+  MIN_HEALTH = 20
+  BOSS_POWER = 8
+  BOSS_HEALTH = 50
 
-  def alive?
-    health.positive?
-  end
+  def initialize(boss: false)
+    @boss = boss
+    name = NAMES.sample
+    type = 'enemy'
 
-  def hit(hp)
-    self.health -= hp
+    super(type, name, enemy_health, enemy_power)
   end
 
   def info
     status
-    puts "You are facing enemy #{name}! What do you do? (fight/run)"
+    UI.enemy_info(name)
   end
 
-  def hit_power
-    (1..power).to_a.sample
+  private
+
+  def enemy_health
+    boss ? BOSS_HEALTH : rand(MIN_HEALTH..MAX_HEALTH)
   end
 
-  def status
-    puts '-' * 50
-    puts "--- ENEMY NAME : #{name} ---"
-    puts "--- HP : #{health} ---"
-    puts "--- POWER : #{power} ---"
-    puts '-' * 50
+  def enemy_power
+    boss ? BOSS_POWER : rand(MIN_POWER..MAX_POWER)
   end
 end

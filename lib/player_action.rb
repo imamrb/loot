@@ -1,5 +1,21 @@
+# frozen_string_literal: true
+
+# Handles player actions with enemy
 class PlayerAction
+  attr_reader :action, :room, :player, :enemy
+
+  def initialize(action, room, player, enemy)
+    @action = action
+    @room = room
+    @player = player
+    @enemy = enemy
+  end
+
   def self.call(action, room, player)
+    new(action, room, player, room.enemy).call
+  end
+
+  def call
     raise InvalidAction, UI.not_in_a_enemy_room unless room.enemy
 
     case action
@@ -12,30 +28,32 @@ class PlayerAction
     room.mark_complete
   end
 
-  def self.fight(enemy, player)
-    while player.alive?
-      enemy_hp = enemy.hit_power
-      player_hp = player.hit_power
+  private
 
-      puts "You hit the enemy with #{player_hp} HP !"
-      enemy.hit(player_hp)
+  def fight(enemy, player)
+    while player.alive?
+      enemy_power = enemy.hit_power
+      player_power = player.hit_power
+
+      UI.player_hit_enemy(player_power, enemy.health)
+      enemy.hit(player_power)
 
       unless enemy.alive?
-        puts 'The enemy is defeated! :)'
+        UI.enemy_defeated
         return
       end
 
-      player.hit(enemy_hp)
-      puts "The enemy hit you back with #{enemy_hp} -> you loose #{enemy_hp} HP !"
+      player.hit(enemy_power)
+      UI.enemy_hit_player(enemy_power, player.health)
     end
   end
 
-  def self.run(enemy, player)
-    possibility = 100 - enemy.hit_power
+  def run(enemy, player)
+    possibility = 10 - enemy.hit_power
 
-    if possibility > 50
+    if possibility > 5
       UI.escaped
-    elsif possibility > 30
+    elsif possibility > 3
       player.hit(10)
       UI.escaped_with_hit(10)
     else

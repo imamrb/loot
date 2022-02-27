@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Defines Event Class. Event is some activity in a room
 class Event
   STORES = ['Fridge', 'Mystery Box', 'Hidden Window']
   TYPES = %i[elixir spell poison converter]
@@ -12,28 +15,27 @@ class Event
   end
 
   def info
-    puts "You are in a event room! Theres a #{storage}, #{location}.\n" \
-         'Would you like to open it? (yes/no)'
+    UI.event_info(storage, location)
   end
 
   def perform(player)
     case type
     when :elixir
       player.heal(10)
-      puts 'You have found Elixir! Healing you for 10 HP.'
+      UI.found_elixir
     when :spell
       player.power_up(1)
-      puts "You have found a powerful spell! Your new power: #{player.power}."
+      UI.found_spell(player.power)
     when :poison
       player.hit(10)
-      puts 'You have got infected with poison! Lost 10 HP.'
+      UI.found_poison
     when :converter
-      puts "You find \"the converter\", a ancestral item who convert HP to POWER, you'r convert 20 HP to 5 POWER."
+      UI.found_converter
       if player.health > 20
         player.hit(20)
         player.power_up(5)
       else
-        puts 'Not enough life'
+        UI.not_enough_life
       end
     end
   end

@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Handle event related commands
 class EventHandler
   def self.call(action, room, player)
     raise InvalidAction, UI.not_in_a_event_room unless room.event
@@ -10,6 +13,6 @@ class EventHandler
     end
 
     room.mark_complete
-    puts player.status
+    player.status
   end
 end

@@ -1,16 +1,21 @@
-class Player
-  attr_accessor :lat, :long, :name, :world, :health, :power
+# frozen_string_literal: true
+
+# Defines a Player Class
+class Player < Character
+  attr_accessor :lat, :long, :world
 
   MAX_HEALTH = 100
   MAX_POWER = 10
 
   def initialize(lat:, long:, world:, name: 'player')
-    @name = name
+    health = MAX_HEALTH
+    power = MAX_POWER
+    type = 'player'
+    super(type, name, health, power)
+
     @lat = lat
     @long = long
     @world = world
-    @health = MAX_HEALTH
-    @power = MAX_POWER
 
     world.visit(lat, long)
   end
@@ -19,6 +24,7 @@ class Player
     [lat, long]
   end
 
+<<<<<<< Updated upstream
   def alive?
     health.positive?
   end
@@ -27,16 +33,14 @@ class Player
     self.health -= hp
   end
 
+=======
+>>>>>>> Stashed changes
   def power_up(power)
     self.power += power
   end
 
   def heal(hp)
     self.health += hp
-  end
-
-  def hit_power
-    (1..power).to_a.sample
   end
 
   def can_move?(direction)
@@ -54,13 +58,5 @@ class Player
     end
 
     Room.new({ lat: lat, long: long, completed: completed, world: world })
-  end
-
-  def status
-    puts '-' * 50
-    puts "--- PLAYER NAME : #{name} ---"
-    puts "--- HP : #{health} / #{MAX_HEALTH} ---"
-    puts "--- POWER : #{power} ---"
-    puts '-' * 50
   end
 end

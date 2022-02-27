@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
+# World consists of many rooms
 class World
-  attr_accessor :map, :stats, :rows, :columns, :visited_rooms
+  attr_accessor :map, :stats, :rows, :columns
 
   def initialize(rows:, columns:)
     @rows = rows
@@ -8,14 +11,16 @@ class World
   end
 
   def show_map
-    print "\n\n"
-
+    UI.new_line
+    puts '*' * 10 + ' MAP ' + '*' * 10
     map.each do |line|
+      print ' ' * 4
       print line
       print "\n"
     end
-
-    print "\n"
+    puts '*' * 25
+    UI.map_info
+    UI.new_line
   end
 
   def visit(lat, long)
@@ -31,7 +36,11 @@ class World
   end
 
   def last_room?
-    false
+    visited_rooms_count == total_rooms
+  end
+
+  def conqured?(last_room)
+    visited_rooms_count == total_rooms && last_room.completed
   end
 
   def move_location(direction, x, y)
@@ -50,6 +59,22 @@ class World
   end
 
   private
+
+  def total_rooms
+    rows * columns
+  end
+
+  def visited_rooms_count
+    visit_count = 0
+
+    rows.times do |r|
+      columns.times do |c|
+        visit_count += 1 if map[r][c] == 'O'
+      end
+    end
+
+    visit_count
+  end
 
   def generate_map
     tmp_map = []

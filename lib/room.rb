@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
+# room is single unit of the world
 class Room
   attr_accessor :lat, :long, :world, :type, :completed
 
   class Empty
     def info
-      puts 'Theres nothing new here.'
-      puts 'Move on to a new cell using navigation commands. (up/down/left/right) '
+      UI.empty_room_info
     end
   end
 
@@ -14,10 +16,6 @@ class Room
     @lat = lat
     @long = long
     @type = get_type
-  end
-
-  def interact(player)
-    @type.interact(player)
   end
 
   def enemy
@@ -34,14 +32,17 @@ class Room
     self.type = Empty.new
   end
 
+  def location_info
+    UI.room_location_info(lat, long)
+  end
+
   def info
-    puts "You are now in room: #{lat}, #{long}"
     @type.info
   end
 
   def get_type
     return Empty.new if completed
-    return Enemy({ is_boss: true }).new if world.last_room?
+    return Enemy.new({ boss: true }) if world.last_room?
 
     [Enemy, Event, Enemy].sample.new
   end

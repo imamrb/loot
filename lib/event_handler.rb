@@ -6,9 +6,9 @@ class EventHandler
     raise InvalidAction, UI.not_in_a_event_room unless room.event
 
     case action
-    when 'yes'
+    when :yes
       room.event.perform(player)
-    when 'no'
+    when :no
       UI.skipped_the_event
     end
 

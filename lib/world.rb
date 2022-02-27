@@ -32,7 +32,7 @@ class World
   end
 
   def valid_location?(lat, long)
-    lat < rows && x >= 0 && long < columns && long >= 0
+    lat < rows && long >= 0 && long < columns && long >= 0
   end
 
   def last_room?
@@ -45,13 +45,13 @@ class World
 
   def move_location(direction, x, y)
     case direction
-    when 'up'
+    when :up
       x -= 1
-    when 'down'
+    when :down
       x += 1
-    when 'right'
+    when :right
       y += 1
-    when 'left'
+    when :left
       y -= 1
     end
 

@@ -33,7 +33,7 @@ class Game
 
     while running
       cmd = UI.get_cmd
-      execute_cmd(cmd)
+      execute_cmd(cmd.to_sym)
 
       if player.dead?
         UI.player_lost; break
@@ -54,7 +54,7 @@ class Game
   def execute_cmd(cmd)
     error_handler do
       case cmd
-      when 'map', 'm'
+      when :map
         world.show_map
         room.location_info
         UI.navigation_help
@@ -64,25 +64,15 @@ class Game
         world.show_map
         room.location_info
         room.info
-<<<<<<< Updated upstream
-      when 'exit', 'quit', 'q', 'e'
-=======
       when :exit
->>>>>>> Stashed changes
         UI.exit
         self.running = false
-      when 'help', 'h'
+      when :help
         UI.help(room)
-      when 'status'
+      when :status
         player.status
-      when 'fight', 'run', 'f', 'r'
+      when :fight, :run
         PlayerAction.call(cmd, room, player)
-<<<<<<< Updated upstream
-      when 'yes', 'no'
-        EventHandler.call(cmd, room, player)
-      when 'up', 'down', 'left', 'right'
-        do_move
-=======
         execute_cmd(:map)
       when :yes, :no
         EventHandler.call(cmd, room, player)
@@ -96,26 +86,12 @@ class Game
         else
           UI.clear_this_room_first
         end
->>>>>>> Stashed changes
       else
         UI.invalid_action
       end
     end
   end
 
-<<<<<<< Updated upstream
-  def do_move
-    if room.completed
-      if player.can_move?(cmd)
-        self.room = player.move(cmd)
-        puts room.info
-      else
-        UI.area_out_of_bounds
-      end
-    else
-      UI.clear_this_room_first
-    end
-=======
   def world_params
     { rows: MAP_ROWS, columns: MAP_COLUMNS }
   end
@@ -126,7 +102,6 @@ class Game
 
   def room_params
     { lat: INITIAL_LATITUDE, long: INITIAL_LONGITUDE, world: world }
->>>>>>> Stashed changes
   end
 end
 

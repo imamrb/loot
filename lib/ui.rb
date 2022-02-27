@@ -62,8 +62,6 @@ class UI
       puts 'Action Invalid!'
     end
 
-<<<<<<< Updated upstream
-=======
     def navigation_help
       puts "\nMove on to a new room using navigation commands. (up/down/left/right) \n"
     end
@@ -82,8 +80,14 @@ class UI
       puts 'This room was already visited before! No new activity here.'
     end
 
+    ## Enemy Texts
+
     def enemy_info(name)
       puts "You are facing enemy #{name}! What do you do? (fight/run)"
+    end
+
+    def boss_info(name)
+      puts "You are now facing the Enemy King: #{name}! What do you do? (fight/run) \n"
     end
 
     ## Event Texts
@@ -145,7 +149,6 @@ class UI
 
     ## Player Action Texts
 
->>>>>>> Stashed changes
     def not_in_a_enemy_room
       "You are not in a enemy room! \n"
     end

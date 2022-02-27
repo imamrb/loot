@@ -19,9 +19,9 @@ class PlayerAction
     raise InvalidAction, UI.not_in_a_enemy_room unless room.enemy
 
     case action
-    when 'fight', 'f'
+    when :fight
       fight(room.enemy, player)
-    when 'run', 'r'
+    when :run
       run(room.enemy, player)
     end
 
@@ -49,7 +49,7 @@ class PlayerAction
   end
 
   def run(enemy, player)
-    possibility = 10 - enemy.hit_power
+    possibility = 10 - enemy.power
 
     if possibility > 5
       UI.escaped

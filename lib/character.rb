@@ -23,8 +23,9 @@ class Character
     self.health -= hp
   end
 
+  # Pick a random hit power from enemy min power to current power
   def hit_power
-    (1..power).to_a.sample
+    (3..power).to_a.sample
   end
 
   def status

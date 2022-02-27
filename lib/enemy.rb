@@ -23,7 +23,8 @@ class Enemy < Character
 
   def info
     status
-    UI.enemy_info(name)
+    UI.enemy_info(name) unless boss
+    UI.boos_info(name) if boss
   end
 
   private

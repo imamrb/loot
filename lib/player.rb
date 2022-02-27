@@ -24,17 +24,6 @@ class Player < Character
     [lat, long]
   end
 
-<<<<<<< Updated upstream
-  def alive?
-    health.positive?
-  end
-
-  def hit(hp)
-    self.health -= hp
-  end
-
-=======
->>>>>>> Stashed changes
   def power_up(power)
     self.power += power
   end
@@ -51,12 +40,6 @@ class Player < Character
   def move(direction)
     self.lat, self.long = world.move_location(direction, lat, long)
 
-    completed = true
-    unless world.visited?(lat, long)
-      world.visit(lat, long)
-      completed = false
-    end
-
-    Room.new({ lat: lat, long: long, completed: completed, world: world })
+    [lat, long]
   end
 end

@@ -23,7 +23,7 @@ class Game
   end
 
   def play
-    name = UI.ask("What's your name? ")
+    name = UI.ask("What's your name? : ")
     player.name = name
 
     UI.welcome(player.name)
@@ -75,11 +75,11 @@ class Game
         PlayerAction.call(cmd, room, player)
         execute_cmd(:map)
       when :yes, :no
-        EventHandler.call(cmd, room, player)
+        EventAction.call(cmd, room, player)
         execute_cmd(:map)
       when :up, :down, :left, :right
         if room.completed && player.can_move?(cmd)
-          NavigationHandler.call(cmd, self)
+          Navigation.call(cmd, self)
           execute_cmd(:wmi)
         elsif !player.can_move?(cmd)
           UI.area_out_of_bounds

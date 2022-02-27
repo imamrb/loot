@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# Handle event related commands
-class EventHandler
+# Handle event actions
+class EventAction
   def self.call(action, room, player)
     raise InvalidAction, UI.not_in_a_event_room unless room.event
 

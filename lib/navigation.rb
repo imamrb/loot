@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Calculate new location and assign new room for the world
-class NavigationHandler
+class Navigation
   attr_accessor :game, :world, :player, :direction
 
   def initialize(direction, game)

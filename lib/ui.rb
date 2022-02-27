@@ -17,7 +17,7 @@ class UI
     end
 
     def ask(question)
-      puts question
+      print question
 
       gets.chomp
     end
@@ -25,11 +25,13 @@ class UI
     def help(room)
       puts '.' * 50
       print "\nBasic Commands:\n\n"
-      puts 'map    : See the current map'
-      puts 'wmi    : Find out where you are!'
-      puts 'status : Your currnet player info'
+      puts 'map      : See the current map'
+      puts 'wmi      : Find out where you are!'
+      puts 'status   : Your currnet player info'
+      puts 'location : Your current location on map'
+      puts 'exit     : Quit game'
 
-      print "\nCurrent actions:\n\n"
+      print "\nPermitted commands based on player state:\n\n"
       if room.enemy
         puts 'fight : Fight enemy'
         puts 'run   : Run From the enemy'

@@ -4,9 +4,9 @@ class Enemy
   NAMES = %w[HULK IMP GIANT LAVA HOUND]
 
   def initialize(is_boss: false)
-    @power = is_boss ? 8 : rand(1..5)
+    @power = is_boss ? 8 : rand(3..5)
     @name = NAMES.sample
-    @health = is_boss ? 50 : rand(10..30)
+    @health = is_boss ? 50 : rand(20..30)
   end
 
   def alive?

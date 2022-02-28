@@ -2,9 +2,8 @@
 
 A text based cli adventure game built with Ruby!
 
-## Demo
+<img src="./screenshot.png" width="480"/>
 
-<img src="./demo.gif" width="480"/>
 
 ## Prerequisite
 

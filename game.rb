@@ -51,6 +51,10 @@ class Game
     puts e.to_s
   end
 
+  def game_over?
+    player.dead? || world.conqured?(room)
+  end
+
   def execute_cmd(cmd)
     error_handler do
       case cmd
@@ -73,10 +77,10 @@ class Game
         player.status
       when :fight, :run
         PlayerAction.call(cmd, room, player)
-        execute_cmd(:map) unless player.dead? || world.conqured?(room)
+        execute_cmd(:map) unless game_over?
       when :yes, :no
         EventAction.call(cmd, room, player)
-        execute_cmd(:map)
+        execute_cmd(:map) unless game_over?
       when :up, :down, :left, :right
         if room.completed && player.can_move?(cmd)
           Navigation.call(cmd, self)

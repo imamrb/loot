@@ -2,6 +2,9 @@
 
 A text based cli adventure game built with Ruby!
 
+<img src="./screenshot.png" width="480"/>
+
+
 ## Prerequisite
 
  - Ruby Version >= 2.0

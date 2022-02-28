@@ -30,6 +30,9 @@ class Player < Character
 
   def heal(hp)
     self.health += hp
+    if health > MAX_HEALTH
+      self.health = MAX_HEALTH
+    end
   end
 
   def can_move?(direction)

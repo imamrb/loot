@@ -32,7 +32,7 @@ class World
   end
 
   def valid_location?(lat, long)
-    lat < rows && long >= 0 && long < columns && long >= 0
+    lat < rows && lat >= 0 && long < columns && long >= 0
   end
 
   def last_room?

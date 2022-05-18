@@ -4,7 +4,7 @@
 class Enemy < Character
   attr_reader :boss
 
-  NAMES = %w[HULK IMP GIANT LAVA HOUND]
+  NAMES = %w[HULK IMP GIANT LAVA HOUND].freeze
 
   MIN_POWER = 4
   MAX_POWER = 7

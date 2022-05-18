@@ -12,7 +12,7 @@ class World
 
   def show_map
     UI.new_line
-    puts '*' * 10 + ' MAP ' + '*' * 10
+    puts "#{'*' * 10} MAP #{'*' * 10}"
     map.each do |line|
       print ' ' * 4
       print line

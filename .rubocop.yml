@@ -1,0 +1,66 @@
+AllCops:
+  TargetRubyVersion: 3.0
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  NewCops: enable
+
+Layout/LineLength:
+  Max: 130
+
+Metrics/MethodLength:
+  Enabled: true
+  CountComments: false
+  Max: 10
+  Exclude:
+    - spec/**/*
+
+Metrics/BlockLength:
+  Enabled: true
+  Exclude:
+    - spec/**/*
+
+Metrics/AbcSize:
+  Description: A calculated magnitude based on number of assignments,branches,
+    and conditions.
+  Max: 19
+  IgnoredMethods:
+    - change
+    - query_string
+
+Style/Documentation:
+  Description: Document classes and non-namespace modules.
+  Enabled: false
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+
+Style/TrailingCommaInHashLiteral:
+  Description: Checks for trailing comma in hash literals.
+  EnforcedStyleForMultiline: consistent_comma
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: single_quotes
+
+Layout/DotPosition:
+  Enabled: true
+  EnforcedStyle: trailing
+  SupportedStyles:
+    - leading
+    - trailing
+
+Style/GuardClause:
+  Enabled: true
+  MinBodyLength: 1
+
+Naming/RescuedExceptionsVariableName:
+  Enabled: true
+  PreferredName: error
+
+Naming/MethodParameterName:
+  Enabled: false

@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require_relative 'spec_helper'
 
 BOSS_POWER = 8
-BOSS_HEALTH = 50
+BOSS_HEALTH = 40
 
 RSpec.describe Enemy do
   let(:enemy) { Enemy.new({ boss: true }) }

@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-Dir['lib/*.rb'].each { |file| require_relative file }
-
 # Runs the main process of the game
 class Game
   attr_accessor :running, :world, :player, :room
@@ -13,13 +11,9 @@ class Game
 
   def initialize
     @running = true
-    @world = World.new(world_params)
-    @player = Player.new(player_params)
-    @room = Room.new(room_params)
-  end
-
-  def self.play
-    new.play
+    @world = World.new(**world_params)
+    @player = Player.new(**player_params)
+    @room = Room.new(**room_params)
   end
 
   def play
@@ -36,9 +30,11 @@ class Game
       execute_cmd(cmd.to_sym)
 
       if player.dead?
-        UI.player_lost; break
+        UI.player_lost
+        break
       elsif world.conqured?(room)
-        UI.player_won; break
+        UI.player_won
+        break
       end
     end
   end
@@ -47,8 +43,8 @@ class Game
 
   def error_handler
     yield
-  rescue StandardError => e
-    puts e.to_s
+  rescue StandardError => error
+    puts error.to_s
   end
 
   def game_over?
@@ -108,5 +104,3 @@ class Game
     { lat: INITIAL_LATITUDE, long: INITIAL_LONGITUDE, world: world }
   end
 end
-
-Game.play

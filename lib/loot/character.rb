@@ -30,7 +30,7 @@ class Character
 
   def status
     UI.new_line
-    puts decorator * 20 + " #{type} INFO " + decorator * 18
+    puts (decorator * 20) + " #{type} INFO " + (decorator * 18)
     puts "--- NAME    : #{name} ---"
     puts "--- POWER   : #{power} PO ---"
     puts "--- HEALTH  : #{health} HP ---"

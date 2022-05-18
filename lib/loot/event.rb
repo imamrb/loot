@@ -2,9 +2,9 @@
 
 # Defines Event Class. Event is some activity in a room
 class Event
-  STORES = ['Fridge', 'Mystery Box', 'Hidden Window']
-  TYPES = %i[elixir spell poison converter]
-  LOCATION = ['right behind You', 'over there', 'up above the corner']
+  STORES = ['Fridge', 'Mystery Box', 'Hidden Window'].freeze
+  TYPES = %i[elixir spell poison converter].freeze
+  LOCATION = ['right behind You', 'over there', 'up above the corner'].freeze
 
   attr_accessor :type, :storage, :location
 

@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email = ['imam.swe@gmail.com']
 
   spec.summary = 'Write a short summary, because RubyGems requires one.'
-  spec.description = 'Write a longer description or delete this line.'
+  spec.description = 'A text based CLI adventure game built on ruby'
   spec.homepage = 'https://www.github.com/imamrb/loot'
   spec.license = 'MIT'
   spec.required_ruby_version = '>= 2.6.0'
@@ -35,5 +35,5 @@ Gem::Specification.new do |spec|
 
   # For more information and examples about making a new gem, check out our
   # guide at: https://bundler.io/guides/creating_gem.html
-  # spec.metadata['rubygems_mfa_required'] = 'true'
+  spec.metadata['rubygems_mfa_required'] = 'true'
 end

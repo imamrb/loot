@@ -8,8 +8,7 @@ Gem::Specification.new do |spec|
   spec.authors = ['Imam Hossain']
   spec.email = ['imam.swe@gmail.com']
 
-  spec.summary = 'Write a short summary, because RubyGems requires one.'
-  spec.description = 'A text based CLI adventure game built on ruby'
+  spec.summary = 'A text based CLI adventure game'
   spec.homepage = 'https://www.github.com/imamrb/loot'
   spec.license = 'MIT'
   spec.required_ruby_version = '>= 2.6.0'

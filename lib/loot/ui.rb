@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Defines methods containing helper texts and IO related methods
 class UI
   ## TODO: Move text only messages to an array
